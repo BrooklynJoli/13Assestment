@@ -10,3 +10,5 @@ button = tk.Button(text="Click me!")
 button.pack()
 
 tk.mainloop()
+
+print("hello")
