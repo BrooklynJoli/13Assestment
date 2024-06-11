@@ -2,7 +2,7 @@
 import tkinter as tk
 from tkinter import messagebox
 
-print("hello world")
+print("no man")
 
 #class to represent houses
 class House:
