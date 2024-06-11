@@ -1,7 +1,10 @@
 # Brooklyn Joli
 import tkinter as tk
 from tkinter import messagebox
-# Create a class to
+
+print("hello world")
+
+#class to represent houses
 class House:
     def __init__(self, house, bedrooms, lounges, bathrooms, toilets, swimming_pool, sqm):
         self.house = house
@@ -12,6 +15,7 @@ class House:
         self.swimming_pool = swimming_pool
         self.sqm = sqm
 
+    # Method to calculate rental costs COMPLEX PROGRAMMING TECHNIQUE 1
     def calculate_rental(self, risk_level):
         # Calculate features cost
         features_cost = self.house * 50 + self.bedrooms * 50 + self.lounges * 25 + self.bathrooms * 50 + \
@@ -44,20 +48,22 @@ class House:
 
         # Calculate weekly, monthly, and yearly rental
         weekly_rental = total_cost_with_gst
-        monthly_rental = total_cost_with_gst * 4
+        monthly_rental = total_cost_with_gst * 4.34524
         yearly_rental = total_cost_with_gst * 52
 
         return total_cost_with_gst, weekly_rental, monthly_rental, yearly_rental
 
-
-class RentalAgency:  # Class to manage rental agency calculations
+# Define a class to manage rental agency calculations
+class RentalAgency:
     def __init__(self):
         self.calculations = []
 
-    def add_calculation(self, house, total_rental):  # Method to add a rental calculation
+    # Method to add a rental calculation
+    def add_calculation(self, house, total_rental):
         self.calculations.append((house, total_rental))
 
-    def get_statistics(self):  # Method to get statistics of rental calculations
+    # Method to get statistics of rental calculations
+    def get_statistics(self):
         num_calculations = len(self.calculations)
         if num_calculations == 0:
             return 0, 0, 0
@@ -66,11 +72,12 @@ class RentalAgency:  # Class to manage rental agency calculations
         average_sqm = sum(house.sqm for house, _ in self.calculations) / num_calculations
         return num_calculations, average_rent_cost, average_sqm
 
-rental_agency = RentalAgency()  # Create instance of RentalAgency
+rental_agency = RentalAgency()  # Create an instance of RentalAgency
 
-def calculate_rental():  # Function to calculate rental
-    # Get input values from GUI
+# Function to calculate rental COMPLEX PROGRAMMING TECHNIQUE 2
+def calculate_rental():
     try:
+        # Get input values from GUI
         house = int(entries[0].get())
         bedrooms = int(entries[1].get())
         lounges = int(entries[2].get())
@@ -100,14 +107,16 @@ def calculate_rental():  # Function to calculate rental
     except ValueError:
         messagebox.showerror("Error", "Please enter valid numeric values.")
 
-def show_statistics():  # Function to show rental statistics
+# Function to show rental statistics COMPLEX PROGRAMMING TECHNIQUE 3
+def show_statistics():
     num_calculations, average_rent_cost, average_sqm = rental_agency.get_statistics()
     messagebox.showinfo("Key Statistics",
                         f"Number of Calculations: {num_calculations}\n"
                         f"Average Rent Cost: ${average_rent_cost:.2f}\n"
                         f"Average sqm: {average_sqm:.2f}")
 
-def center_window(event):  # Function to center window on screen
+# Function to center window on screen
+def center_window(event):
     # Calculate screen width and height
     screen_width = root.winfo_screenwidth()
     screen_height = root.winfo_screenheight()
@@ -150,5 +159,5 @@ statistics_button.grid(row=len(labels)+2, column=0, columnspan=2, padx=10, pady=
 # Bind center_window function to window resize event
 root.bind("<Configure>", center_window)
 
-#end
+# Start GUI main loop 
 root.mainloop()
