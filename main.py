@@ -2,8 +2,6 @@
 import tkinter as tk
 from tkinter import messagebox
 
-print("no man")
-
 #class to represent houses
 class House:
     def __init__(self, house, bedrooms, lounges, bathrooms, toilets, swimming_pool, sqm):
